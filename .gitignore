@@ -1,0 +1,8 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+.DS_Store
+
+# Virtual environments
+.venv

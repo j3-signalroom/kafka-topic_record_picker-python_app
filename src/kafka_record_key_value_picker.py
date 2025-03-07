@@ -1,4 +1,5 @@
 import logging
+from typing import Dict
 from confluent_kafka import KafkaConsumer, TopicPartition
 
 
@@ -10,17 +11,15 @@ __status__     = "dev"
 
 
 class KafkaRecordKeyValuePicker:
-    """
-    A class to pick a specific key/value record from a Kafka topic partition at a given offset.
-    """
+    """This class picks a specific key/value record from a Kafka topic partition at a given offset."""
 
-    def __init__(self, properties, polling_in_ms, topic_name):
-        """
-        Initialize the Kafka consumer with the given properties, polling duration, and topic name.
+    def __init__(self, properties: Dict, polling_in_ms: int, topic_name: str):
+        """Initialize the Kafka consumer with the given properties, polling duration, and topic name.
 
-        :param properties: Dictionary of Kafka consumer configuration properties.
-        :param polling_in_ms: Polling duration in milliseconds.
-        :param topic_name: Name of the Kafka topic.
+        Arg(s):
+            properties (dict):    Dictionary of Kafka consumer configuration properties.
+            polling_in_ms (int):  Polling duration in milliseconds.
+            topic_name (str):     Name of the Kafka topic.
         """
         self.topic_name = topic_name
         self.polling_in_ms = polling_in_ms
@@ -28,13 +27,12 @@ class KafkaRecordKeyValuePicker:
         self.consumer = KafkaConsumer(**properties)
         self.logger = logging.getLogger(self.__class__.__name__)
 
-    def pick_key_value_record(self, offset, partition):
-        """
-        Read a specific key/value record from the Kafka cluster at the specified offset within a topic partition.
+    def pick_key_value_record(self, offset: int, partition: int):
+        """Read a specific key/value record from the Kafka cluster at the specified offset within a topic partition.
 
-        :param offset: The offset to seek to.
-        :param partition: The partition number.
-        :return: The consumer record or None if an exception occurs.
+        Arg(s):
+            offset (int):       The offset to seek to.
+            partition (int):    The partition number.
         """
         # Create a TopicPartition instance for the given topic and partition.
         topic_partition = TopicPartition(self.topic_name, partition)
@@ -63,13 +61,11 @@ class KafkaRecordKeyValuePicker:
                 return None
 
     def close(self):
-        """
-        Close the Kafka consumer.
-        """
+        """Close the Kafka consumer."""
         self.consumer.close()
 
     def __enter__(self):
-        # Allow use in 'with' statements.
+        """Allow use in 'with' statements."""
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):

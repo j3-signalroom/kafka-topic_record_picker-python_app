@@ -19,7 +19,11 @@ resource "aws_secretsmanager_secret" "kafka_cluster_api_key_python_client" {
 
 resource "aws_secretsmanager_secret_version" "kafka_cluster_api_key_python_client" {
     secret_id     = aws_secretsmanager_secret.kafka_cluster_api_key_python_client.id
-    secret_string = jsonencode({"sasl.username": "${module.kafka_cluster_api_key_rotation.active_api_key.id}",
-                                "sasl.password": "${module.kafka_cluster_api_key_rotation.active_api_key.secret}",
+    secret_string = jsonencode({"sasl.username": "${module.app_manager_kafka_api_key.active_api_key.id}",
+                                "sasl.password": "${module.app_manager_kafka_api_key.active_api_key.secret}",
+                                "sasl.username": "${module.app_consumer_kafka_api_key.active_api_key.id}",
+                                "sasl.password": "${module.app_consumer_kafka_api_key.active_api_key.secret}",
+                                "sasl.username": "${module.app_producer_kafka_api_key.active_api_key.id}",
+                                "sasl.password": "${module.app_producer_kafka_api_key.active_api_key.secret}",
                                 "bootstrap.servers": replace(confluent_kafka_cluster.kafka_cluster.bootstrap_endpoint, "SASL_SSL://", "")})
 }

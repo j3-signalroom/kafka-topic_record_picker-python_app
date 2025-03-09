@@ -160,8 +160,8 @@ terraform init
 if [ "$create_action" = true ]
 then
     # Create/Update the Terraform configuration
-    terraform plan -var-file=terraform.tfvars
-    terraform apply -var-file=terraform.tfvars
+    terraform plan -var-file=terraform.tfvars -out=tfplan
+    terraform apply "tfplan"
 else
     # Destroy the Terraform configuration
     terraform destroy -var-file=terraform.tfvars

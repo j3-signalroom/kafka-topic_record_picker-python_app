@@ -79,12 +79,3 @@ variable "aws_log_retention_in_days" {
         error_message = "AWS Log Retention in Days, `aws_log_retention_in_days`, must be 1 up to a maximum value of 900."
     }
 }
-variable "snowflake_warehouse" {
-    description = "The Snowflake warehouse."
-    type        = string
-}
-
-variable "service_account_user" {
-    description = "The Snowflake service account user who is to be assigned the RSA key pairs for its authentication."
-    type        = string
-}

@@ -3,6 +3,8 @@ __pycache__/
 *.py[oc]
 build/
 .DS_Store
+scratchpad.md
+.env
 
 # Virtual environments
 .venv

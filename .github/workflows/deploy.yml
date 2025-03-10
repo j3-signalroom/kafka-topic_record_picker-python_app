@@ -54,8 +54,6 @@ run-name: ${{ github.workflow }} ${{ github.ref_name }} branch to the ${{ github
 jobs:
   terraform-plan:
     runs-on: ubuntu-latest
-    outputs:
-      plan_artifact: ${{ steps.upload.outputs.artifact-url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

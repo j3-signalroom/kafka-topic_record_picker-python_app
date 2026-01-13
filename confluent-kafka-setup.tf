@@ -46,9 +46,6 @@ module "app_manager_kafka_api_key" {
     }
   }
 
-  confluent_api_key    = var.confluent_api_key
-  confluent_api_secret = var.confluent_api_secret
-
   # Optional Input(s)
   key_display_name             = "Confluent Kafka Cluster Service Account API Key - {date} - Managed by Terraform Cloud"
   number_of_api_keys_to_retain = var.number_of_api_keys_to_retain
@@ -96,9 +93,6 @@ module "app_consumer_kafka_api_key" {
       id = confluent_environment.env.id
     }
   }
-
-  confluent_api_key    = var.confluent_api_key
-  confluent_api_secret = var.confluent_api_secret
 
   # Optional Input(s)
   key_display_name             = "Confluent Kafka Cluster Service Account API Key - {date} - Managed by Terraform Cloud"
@@ -148,9 +142,6 @@ module "app_producer_kafka_api_key" {
       id = confluent_environment.env.id
     }
   }
-
-  confluent_api_key    = var.confluent_api_key
-  confluent_api_secret = var.confluent_api_secret
 
   # Optional Input(s)
   key_display_name             = "Confluent Kafka Cluster Service Account API Key - {date} - Managed by Terraform Cloud"

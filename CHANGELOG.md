@@ -7,6 +7,7 @@ The format is base on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), 
 ## [0.04.00.000] - TBD
 ### Added
 - Issue [#36](https://github.com/j3-signalroom/kafka-topic_record_picker-python_app/issues/36)
+- Issue [#38](https://github.com/j3-signalroom/kafka-topic_record_picker-python_app/issues/38)
 
 ### Changed
 - Issue [#34](https://github.com/j3-signalroom/kafka-topic_record_picker-python_app/issues/34)
